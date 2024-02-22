@@ -1,11 +1,8 @@
 #register-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
   height: 100vh;
-  background-color: #F9F9F9;
+  margin: 0;
+  padding: 0;
+  background-color: #1B1A1F;
 }
 
 #register-card {
@@ -13,12 +10,23 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 500px;
-  max-width: 90vw;
+  width: 300px;
+  height: 600px;
+  margin: 0 auto;
   padding: 20px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-  border-radius: 10px;
-  background-color: white;
+  color: #FDFCFE;
+}
+
+#titre{
+  font-size: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+#register-title{
+  width: 100%;
+  text-align: center;
+  font-size: 1.5rem;
 }
 
 #register-form-container {
@@ -35,15 +43,28 @@
 
 #register-button {
   width: 100%;
-  padding: 10px;
+  padding: 15px;
+  margin-top: 1.2rem;
   border: none;
-  border-radius: 5px;
-  background-color: #007BFF;
-  color: white;
+  border-radius: 10px;
+  background-color: #A238FF;
+  color: #FDFCFE;
   cursor: pointer;
 }
 
 #login-link {
   margin-top: 15px;
   text-align: center;
+}
+
+#username-input-container input, #email-input-container input, #photo-input-container input, #password-input-container input{
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #39383c;
+  color: #FDFCFE;
+}
+
+#username-input-container label, #email-input-container label, #photo-input-container label, #password-input-container label{
+  margin-bottom: 5px;
 }
