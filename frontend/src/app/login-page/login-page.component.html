@@ -1,0 +1,41 @@
+@defer (when userConnectedIsLoaded()) {
+    <div id="loading-user">
+        <h1>Chargement du USER</h1>
+    </div>
+}
+@placeholder {
+    <div id="login-card">
+        <p id="titre">Projet - INFO834</p>
+        <div id="login-form-container">
+            <div>
+                <p id="login-title">Log in</p>
+            </div>
+            <form id="login-form" #f="ngForm" (ngSubmit)="onSubmit(f)">
+                <div id="email-input-container">
+                    <label for="email">Email</label>
+                    <input name="email" ngModel  type="text" id="email" required>
+                    @if (f.value.email === "" && submit){
+                        <p>Enter an email</p>
+                    }
+                    @if (errorLoginExist() && errorIsEmail()) {
+                        <p>{{ errorLogin.message }}</p>
+                    }
+                </div>
+                <div id="password-input-container">
+                    <label for="password">Password</label>
+                    <input name="password" ngModel  type="password" id="password" required>
+                    @if (f.value.password === "" && submit){
+                        <p>Enter a password</p>
+                    }
+                    @if (errorLoginExist() && errorIsPassword()) {
+                        <p>{{ errorLogin.message }}</p>
+                    }
+                </div>
+
+                <button type="submit" id="login-button">Login</button>
+                <p id="register-link">Haven't an account ? <a routerLink="/register">Register</a></p>
+            </form>
+        </div>
+    </div>
+}
+

@@ -1,0 +1,51 @@
+#login-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+
+#titre{
+  font-size: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+#login-title{
+  width: 100%;
+    text-align: center;
+  font-size: 1.5rem;
+}
+
+#login-form-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+#email-input-container, #password-input-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+#login-button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007BFF;
+  color: white;
+  cursor: pointer;
+}
+
+#register-link {
+  margin-top: 15px;
+  text-align: center;
+}
