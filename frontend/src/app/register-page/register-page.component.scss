@@ -1,0 +1,49 @@
+#register-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #F9F9F9;
+}
+
+#register-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  max-width: 90vw;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  background-color: white;
+}
+
+#register-form-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+#username-input-container, #email-input-container, #photo-input-container, #password-input-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+#register-button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007BFF;
+  color: white;
+  cursor: pointer;
+}
+
+#login-link {
+  margin-top: 15px;
+  text-align: center;
+}

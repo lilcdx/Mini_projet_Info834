@@ -1,0 +1,46 @@
+<div id="register-container">
+    <p id="project-title">Projet - INFO734</p>
+    <div id="register-card">
+        <div id="register-form-container">
+            <p id="register-title">Register</p>
+        </div>
+        <form id="register-form" #f="ngForm" (ngSubmit)="onSubmit(f)">
+            <div id="username-input-container">
+                <label for="username">Username</label>
+                <input name="username" ngModel  type="text" id="username" required>
+                @if (f.value.username === "" && submit){
+                    <p>Enter an username</p>
+                }
+                @if(errorRegisterExist() && errorIsUsername()) {
+                    <p>{{ errorRegister.message }}</p>
+                }
+            </div>
+            <div id="email-input-container">
+                <label for="email">Your email</label>
+                <input name="email" ngModel  type="email" id="email" required>
+                @if (f.value.email === "" && submit){
+                    <p>Enter an email</p>
+                }
+                @if(errorRegisterExist() && errorIsEmail()) {
+                    <p>{{ errorRegister.message }}</p>
+                }
+            </div>
+            <div id="photo-input-container">
+                <label for="photo_url">Your picture</label>
+                <input name="photo_url" ngModel  type="file" id="photo_url" (change)="onFileChange($event)" required>
+                @if (f.value.photo_url === "" && submit){
+                    <p>Load a picture</p>
+                }
+            </div>
+            <div id="password-input-container">
+                <label for="password">Your password</label>
+                <input name="password" ngModel  type="password" id="password" required>
+                @if (f.value.password === "" && submit){
+                    <p>Enter a password</p>
+                }
+            </div>
+            <button type="submit" id="register-button">Create account</button>
+            <p id="login-link">Have an account ? <a routerLink="/">Login</a></p>
+        </form>
+    </div>
+</div>
