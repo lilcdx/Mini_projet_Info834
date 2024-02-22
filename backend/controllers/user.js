@@ -28,11 +28,33 @@ exports.deleteUser = (req, res, next) => {
     .catch(error => res.status(400).json({ error }));
 }
 
+
+// UPDATE
+exports.updateUser = (req, res, next) => {
+    User.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true })
+    .then(user => {
+        if (!user) {
+            return res.status(404).json({ message: 'User not found!' });
+        }
+        res.status(200).json({ message: 'User updated!', user: user });
+    })
+    .catch(error => res.status(400).json({ error }));
+}
+
 // GET BY ID
 exports.getUserById = (req, res, next) => {
     User.findOne({ _id: req.params.id })
     .then(user => res.status(200).json(user))
     .catch(error => res.status(404).json({ error }));
+}
+
+// GET ALL USER ONLINE
+exports.getAllUserOnline = (req, res, next) => {
+
+    User.find({ online: true })
+    .then(user => res.status(200).json(user))
+    .catch(error => res.status(404).json({ error }));
+
 }
 
 // GET ALL
@@ -41,6 +63,8 @@ exports.getAllUser = (req, res, next) => {
     .then(users => res.status(200).json(users))
     .catch(error => res.status(400).json({ error }));
 }
+
+
 
 
 // ---- CONNEXION
