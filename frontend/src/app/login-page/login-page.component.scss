@@ -1,3 +1,10 @@
+#back {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: #1B1A1F;
+}
+
 #login-card {
   display: flex;
   flex-direction: column;
@@ -7,8 +14,10 @@
   height: 400px;
   margin: 0 auto;
   padding: 20px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-  border-radius: 10px;
+  //box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  //border-radius: 10px;
+  //background-color: #1B1A1F;
+  color: #FDFCFE;
 }
 
 #titre{
@@ -37,15 +46,28 @@
 
 #login-button {
   width: 100%;
-  padding: 10px;
+  padding: 15px;
+  margin-top: 1.2rem;
   border: none;
-  border-radius: 5px;
-  background-color: #007BFF;
-  color: white;
+  border-radius: 10px;
+  background-color: #A238FF;
+  color: #FDFCFE;
   cursor: pointer;
 }
 
 #register-link {
   margin-top: 15px;
   text-align: center;
+}
+
+#email-input-container input, #password-input-container input{
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #39383c;
+  color: #FDFCFE;
+}
+
+#email-input-container label, #password-input-container label{
+    margin-bottom: 5px;
 }
