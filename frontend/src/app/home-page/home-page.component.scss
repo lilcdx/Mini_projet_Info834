@@ -1,0 +1,20 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    padding-top: 25vh; // déplace le contenu vers le haut à 25% de la hauteur de la vue
+    background-color: #1B1A1F;
+    color: #FDFCFE;
+}
+
+.container h1, .container h2 {
+    margin: 0 0 2rem;
+}
+
+.container hr {
+    width: 50%;
+    margin-bottom: 1em; // ajoute un espace sous le trait
+}
