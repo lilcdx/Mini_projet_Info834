@@ -1,0 +1,99 @@
+*{
+    transition: 0.3s ease;
+}
+
+.sidebar{
+    position: fixed;
+}
+
+.left {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 7vw;
+    display: flex;
+    flex-direction: column;
+    //align-items: center;
+    justify-content: start;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    background-color: #1B1A1F;
+    color: #FDFCFE;
+    border-right: 2px solid #FDFCFE;
+    transition: width 0.3s ease;
+
+    .logo {
+        margin-top: 10px;
+        width: 5vw;
+        border-radius: 50%;
+        transition: 0.1s ease-in-out;
+
+        &:hover {
+            border-radius: 20%;
+            transition: 0.1s ease-in-out;
+        }
+    }
+
+    hr {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .add-button {
+        background: none;
+        border: none;
+
+        svg{
+            width: 5vw;
+            height: 5vw;
+            padding: 0.5vw;
+            cursor: pointer;
+            border: 3px solid #A238FF;
+            border-radius: 50%;
+            transition: 0.1s ease-in-out;
+
+            &:hover {
+                border-radius: 20%;
+                transition: 0.1s ease-in-out;
+            }
+        }
+    }
+
+
+    a{
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: #FDFCFE;
+        font-size: 1.5rem;
+
+        .title-app{
+            color: #A238FF;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+    }
+
+    span{
+        margin-left: 1rem;
+    }
+
+    &.expanded {
+        display: block;
+        padding-left: 1rem;
+    }
+}
+
+.right{
+    position: fixed;
+    left: 7vw;
+    width: 2vw;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: 0.3s ease;
+
+    svg{
+        cursor: pointer;
+    }
+}
