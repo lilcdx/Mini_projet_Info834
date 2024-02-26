@@ -52,17 +52,7 @@
     margin-right: auto;
     left: 7vw; /* Ajoutez le décalage à gauche */
     right: 0; /* Ajoutez le décalage à droite */
-}
-
-.bottom-bar {
-    position: fixed;
-    bottom: 0; /* Positionne la barre en bas de la page */
-    width: 50%;
-    display: flex;
-    justify-content: space-between;
     align-items: flex-end; /* Ajoute cette ligne */
-    padding: 10px;
-    z-index: -1;
 }
 
 .bottom-bar textarea {
