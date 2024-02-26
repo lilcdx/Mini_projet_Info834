@@ -1,0 +1,94 @@
+#conversation-page{
+    margin-left: 7vw;
+    background-color: #1B1A1F;
+    color: #FDFCFE;
+    width: 93vw;
+    z-index: -1;
+}
+
+.top-bar {
+    border-bottom: 2px solid #f8f9fa;
+    align-items: center;
+    position: fixed;
+    top: 0; /* Reste en haut de la page */
+    width: 50%; /* Changez la largeur à 50% */
+    height: 60px; /* Augmente la hauteur */
+    background-color: #1B1A1F;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    z-index: -1;
+    margin-left: auto; /* Centre la barre supérieure */
+    margin-right: auto;
+    left: 7vw; /* Ajoutez le décalage à gauche */
+    right: 0; /* Ajoutez le décalage à droite */
+    font-size: 1.5rem;
+}
+
+.content {
+    position: absolute;
+    width: 50%; /* Changez la largeur à 50% */
+    background-color: #1B1A1F;
+    min-height: 100vh;
+    z-index: -10;
+    margin-left: auto; /* Centre le contenu */
+    margin-right: auto;
+    left: 7vw; /* Ajoutez le décalage à gauche */
+    right: 0; /* Ajoutez le décalage à droite */
+    padding: 70px 10px;
+}
+
+.bottom-bar {
+    position: fixed;
+    bottom: 0; /* Positionne la barre en bas de la page */
+    width: 50%; /* Changez la largeur à 50% */
+    //height: 80px; /* Augmente la hauteur */
+    background-color: #1B1A1F;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    z-index: -1;
+    margin-left: auto; /* Centre la barre inférieure */
+    margin-right: auto;
+    left: 7vw; /* Ajoutez le décalage à gauche */
+    right: 0; /* Ajoutez le décalage à droite */
+}
+
+.bottom-bar {
+    position: fixed;
+    bottom: 0; /* Positionne la barre en bas de la page */
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end; /* Ajoute cette ligne */
+    padding: 10px;
+    z-index: -1;
+}
+
+.bottom-bar textarea {
+    flex-grow: 1;
+    margin-right: 10px;
+    padding: 10px;
+    background-color: #1B1A1F;
+    border-radius: 20px;
+    border: 1px solid #f8f9fa;
+    color: #f8f9fa;
+    font-size: 1rem;
+    max-height: 20vh; /* Limite la hauteur à 20vh */
+    overflow: auto; /* Permet le défilement lorsque le contenu dépasse */
+    resize: none; /* Empêche le redimensionnement manuel */
+}
+
+
+.bottom-bar button {
+    width: 3rem;
+    height: 3rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background-color: #A238FF;
+    border: none;
+    margin-bottom: 5px; /* Ajoute de l'espace en dessous du bouton */
+}
