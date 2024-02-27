@@ -5,6 +5,8 @@ import {FormBuilder, FormGroup, FormsModule, NgForm, Validators} from "@angular/
 // import { AuthService } from '../services/auth.service';
 // import { User } from '../models/user.model';
 import { stringify } from 'querystring';
+import { AuthService } from '../services/auth.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-register-page',
@@ -24,10 +26,10 @@ export class RegisterPageComponent {
   registerForm!: FormGroup;
 
 
-  // constructor(private router: Router,
-  //             private fb: FormBuilder,
-  //             protected authService: AuthService,
-  //             protected userService: UserService ) {}
+  constructor(private router: Router,
+              private fb: FormBuilder,
+              protected authService: AuthService,
+              protected userService: UserService ) {}
 
   onSubmit(f: NgForm) {
 
@@ -48,18 +50,21 @@ export class RegisterPageComponent {
         f.value.photo_url != "" &&
         !this.errorRegisterExist()) {
 
-      // this.authService.signup(formData)
-      //     .subscribe(
-      //         data => {
-      //           this.authService.getUserLoggedIn$()
-      //               .subscribe(user => {
-      //                 this.router.navigateByUrl("/home");
-      //               })
-      //         },
-      //         error => {
-      //           console.error('Erreur lors du register :', error.error.message);
-      //           this.errorRegister = error.error;
-      //         })
+      console.log(f.value);
+      
+
+      this.authService.signup(formData)
+          .subscribe(
+              data => {
+                this.authService.getUserLoggedIn$()
+                    .subscribe(user => {
+                      // this.router.navigateByUrl("/home");
+                    })
+              },
+              error => {
+                console.error('Erreur lors du register :', error.error.message);
+                this.errorRegister = error.error;
+              })
     }
   }
 
