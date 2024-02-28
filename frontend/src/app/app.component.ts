@@ -5,14 +5,33 @@ import {RegisterPageComponent} from "./register-page/register-page.component";
 import {HomePageComponent} from "./home-page/home-page.component";
 import {SidebarComponent} from "./sidebar/sidebar.component";
 import {ConversationPageComponent} from "./conversation-page/conversation-page.component";
+import { ContainerMainPageComponent } from './container-main-page/container-main-page.component';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-    imports: [RouterOutlet, LoginPageComponent, RegisterPageComponent, HomePageComponent, SidebarComponent, ConversationPageComponent],
+    imports: [
+      RouterOutlet, 
+      LoginPageComponent, 
+      RegisterPageComponent, 
+      HomePageComponent, 
+      SidebarComponent, 
+      ConversationPageComponent,
+      ContainerMainPageComponent
+    ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'info834';
+
+  constructor(
+    private router: Router,
+  ) {}
+
+  isRoute(route: string): boolean {
+    return this.router.url === route;
+  }
+
 }

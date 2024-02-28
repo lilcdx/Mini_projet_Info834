@@ -1,0 +1,35 @@
+<div id="main">
+
+    <!--    <div class="left">-->
+
+
+    @defer (when userConnectedIsLoaded()){
+        <!-- <div class="flex w-full h-full">
+            <div class="w-fit">
+                <app-sidebar [userConnected]="userConnected"></app-sidebar>
+            </div>
+            <div class="h-screen md:w-[calc(100%-16rem)] md:ml-[16rem] -md:w-full">
+                <app-topbar></app-topbar>
+    
+                <router-outlet (activate)="onOutletLoaded($event)"></router-outlet>
+            </div>
+        </div> -->
+
+        <app-sidebar [userConnected]="userConnected"></app-sidebar>
+        <!--    </div>-->
+        <!--    <div class="right">-->
+        <!--    <app-home-page ></app-home-page>-->
+        @if (isRoute("/home")){
+            <app-home-page></app-home-page>
+        } @else if (isRoute("/conversation")){
+            <app-conversation-page></app-conversation-page>
+        }
+    }
+    @placeholder {
+        <h1>User is loading</h1>
+    }
+    @error {
+        <span>Error</span>
+      }
+
+</div>

@@ -58,7 +58,7 @@ export class RegisterPageComponent {
               data => {
                 this.authService.getUserLoggedIn$()
                     .subscribe(user => {
-                      // this.router.navigateByUrl("/home");
+                      this.router.navigateByUrl("/home");
                     })
               },
               error => {

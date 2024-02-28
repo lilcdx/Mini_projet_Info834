@@ -1,12 +1,13 @@
 <!--<app-login-page></app-login-page>-->
 <!--<app-register-page ></app-register-page>-->
 <!--<app-home-page></app-home-page>-->
-<div id="main">
-<!--    <div class="left">-->
-        <app-sidebar></app-sidebar>
-<!--    </div>-->
-<!--    <div class="right">-->
-    <!--    <app-home-page ></app-home-page>-->
-        <app-conversation-page></app-conversation-page>
-<!--    </div>-->
-</div>
+
+
+
+@if (isRoute("/register")){
+        <app-register-page></app-register-page>
+} @else if (isRoute("/")){
+        <app-login-page></app-login-page>
+} @else {
+        <app-container-main-page></app-container-main-page>
+}
