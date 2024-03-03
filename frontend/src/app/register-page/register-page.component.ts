@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {Router, RouterLink} from "@angular/router";
 import {FormBuilder, FormGroup, FormsModule, NgForm, Validators} from "@angular/forms";
+
 // import { UserService } from '../services/user.service';
 // import { AuthService } from '../services/auth.service';
 // import { User } from '../models/user.model';
@@ -47,6 +48,8 @@ export class RegisterPageComponent {
         f.value.password != "" &&
         f.value.photo_url != "" &&
         !this.errorRegisterExist()) {
+
+
 
       // this.authService.signup(formData)
       //     .subscribe(
