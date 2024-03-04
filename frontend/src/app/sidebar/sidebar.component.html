@@ -4,21 +4,20 @@
             <img src="../../assets/logo.png" alt="Logo" class="logo">
             <span class="title-app" *ngIf="isSidebarExtended">ChatOnline</span>
         </a>
-        <p>{{ userConnected.username }}</p>
-
-        <p style="text-decoration: underline; font-weight: bold;">LIST USER CONNECTED</p>
-        <div class="list-user">
-            @for (userConnected of users; track userConnected){
-                <p style="color: green;">{{ userConnected.username }}</p>
-            }
-
-            <div *ngFor="let userConnected of _listUserConnected | async">
-                <p>{{ userConnected.username }}</p>
-                <p>prout</p>
-            </div>
-        </div>
-
         <hr>
+
+        <a href="">
+            <img src="../../assets/profile_picture.png" alt="{{userConnected.photo_url}}" class="photo">
+            <span  *ngIf="isSidebarExtended">{{ userConnected.username }}</span>
+        </a>
+
+        <a (click)="onLogOut()" routerLink="" class="logout">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="#A238FF">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
+            </svg>
+            <span *ngIf="isSidebarExtended">Logout</span>
+        </a>
+
         <button class="add-button">
             <a href="">
                 <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#A238FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
@@ -26,13 +25,18 @@
             </a>
         </button>
 
-        <a (click)="onLogOut()" routerLink="" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-pink-500 dark:hover:bg-gray-700 group">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-white dark:group-hover:text-white">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
-            </svg>
-            <span *ngIf="isSidebarExtended">Logout</span>
-        </a>
-        
+
+        <hr>
+
+        <div class="list-user">
+            @for (userConnected of users; track userConnected){
+                <a routerLink="/conversation/{{userConnected.id}}">
+                    <img src="../../assets/profile_picture.png" alt="{{userConnected.photo_url}}" class="photo">
+                    <span  *ngIf="isSidebarExtended">{{ userConnected.username }}</span>
+                </a>
+            }
+        </div>
+
     </div>
     <div class="right" [ngStyle]="{'left': sidebarWidth}">
         @if (!isSidebarExtended){

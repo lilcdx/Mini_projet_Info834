@@ -23,7 +23,7 @@
     border-right: 2px solid #FDFCFE;
     transition: width 0.3s ease;
 
-    .logo {
+    .logo, .photo {
         margin-top: 10px;
         width: 5vw;
         border-radius: 50%;
@@ -40,7 +40,9 @@
         margin: 10px 0;
     }
 
-    .add-button {
+    .add-button, .logout {
+        margin-bottom: 5px;
+        margin-top: 5px;
         background: none;
         border: none;
 
@@ -97,3 +99,13 @@
         cursor: pointer;
     }
 }
+
+//.list-user {
+//    max-height: 200vh; /* Ajustez cette valeur en fonction de vos besoins */
+//    overflow-y: auto;
+//    direction: ltr;
+//}
+//
+//.list-user > a {
+//    direction: ltr;
+//}
