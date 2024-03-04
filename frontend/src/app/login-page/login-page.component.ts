@@ -4,6 +4,7 @@ import {FormsModule, NgForm} from "@angular/forms";
 import { take } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { User } from '../models/user.model';
+import { SocketioService } from '../services/socketio.service';
 // import { User } from '../models/user.model';
 // import { AuthService } from '../services/auth.service';
 
@@ -23,9 +24,12 @@ export class LoginPageComponent{
   userConnected!: User;
   errorLogin !: any | undefined;
 
+  APPLICATION_GLOBAL_ROOM = "myRandomChatRoomId";
+
 
   constructor(private router: Router,
-              protected authService: AuthService) {}
+              protected authService: AuthService,
+              private socketService: SocketioService) {}
 
   ngOnInit() {
     this.isLoading = false;

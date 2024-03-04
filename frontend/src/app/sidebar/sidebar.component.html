@@ -5,6 +5,19 @@
             <span class="title-app" *ngIf="isSidebarExtended">ChatOnline</span>
         </a>
         <p>{{ userConnected.username }}</p>
+
+        <p style="text-decoration: underline; font-weight: bold;">LIST USER CONNECTED</p>
+        <div class="list-user">
+            @for (userConnected of users; track userConnected){
+                <p style="color: green;">{{ userConnected.username }}</p>
+            }
+
+            <div *ngFor="let userConnected of _listUserConnected | async">
+                <p>{{ userConnected.username }}</p>
+                <p>prout</p>
+            </div>
+        </div>
+
         <hr>
         <button class="add-button">
             <a href="">

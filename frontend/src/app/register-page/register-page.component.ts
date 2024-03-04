@@ -18,6 +18,7 @@ import { UserService } from '../services/user.service';
   templateUrl: './register-page.component.html',
   styleUrl: './register-page.component.scss'
 })
+
 export class RegisterPageComponent {
   submit = false;
   // userConnected!: User;

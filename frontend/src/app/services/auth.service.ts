@@ -3,15 +3,20 @@ import { Injectable } from '@angular/core';
 import { map, Observable, Subject } from 'rxjs';
 import { UserService } from './user.service';
 import { User } from '../models/user.model';
+import { SocketioService } from './socketio.service';
+
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+  APPLICATION_GLOBAL_ROOM = "myRandomChatRoomId";
+
   private userLoggedIn$ = new Subject<User>();
 
   constructor(private http: HttpClient,
-              protected userService: UserService) { };
+              protected userService: UserService,
+              private socketService: SocketioService) { };
 
 
   login(email: string, password: string): Observable<User> {
@@ -26,7 +31,8 @@ export class AuthService {
             user.photo_url,
             user.online,
           );
-
+    
+          // -- Save user_id in localStorage
           localStorage.removeItem("user_id");
           localStorage.setItem("user_id", user._id);
           this.userLoggedIn$.next(userConnected);
@@ -38,9 +44,16 @@ export class AuthService {
   
 
   getUserLoggedIn$(): Observable<User | undefined> {
+
     let user_id = localStorage.getItem("user_id");
 
     if (user_id !== null) {
+      // Connect to socket 
+      // this.socketService.setupSocketConnection(
+      //   this.userService.getUserById(user_id) as unknown as User,
+      //   "myRandomChatRoomId"
+      // );
+
       // Retourne l'observable directement du service UserService
       return this.userService.getUserById(user_id);
     } else {

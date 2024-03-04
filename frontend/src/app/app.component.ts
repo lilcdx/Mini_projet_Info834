@@ -7,18 +7,22 @@ import {SidebarComponent} from "./sidebar/sidebar.component";
 import {ConversationPageComponent} from "./conversation-page/conversation-page.component";
 import { ContainerMainPageComponent } from './container-main-page/container-main-page.component';
 import { Router } from "@angular/router";
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
     imports: [
       RouterOutlet, 
+      CommonModule,
       LoginPageComponent, 
       RegisterPageComponent, 
       HomePageComponent, 
       SidebarComponent, 
       ConversationPageComponent,
-      ContainerMainPageComponent
+      ContainerMainPageComponent,
+      FormsModule
     ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
