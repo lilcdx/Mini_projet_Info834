@@ -28,12 +28,40 @@
 
         <hr>
 
-        <div class="list-user">
+        <div class="list-user" [ngStyle]="{'width': sidebarWidth}" [ngClass]="{'expanded': isSidebarExtended}">
             @for (userConnected of users; track userConnected){
                 <a routerLink="/conversation/{{userConnected.id}}">
                     <img src="../../assets/profile_picture.png" alt="{{userConnected.photo_url}}" class="photo">
                     <span  *ngIf="isSidebarExtended">{{ userConnected.username }}</span>
                 </a>
+<!--                <a routerLink="/conversation/{{userConnected.id}}">-->
+<!--                    <img src="../../assets/profile_picture.png" alt="{{userConnected.photo_url}}" class="photo">-->
+<!--                    <span  *ngIf="isSidebarExtended">{{ userConnected.username }}</span>-->
+<!--                </a>                <a routerLink="/conversation/{{userConnected.id}}">-->
+<!--                    <img src="../../assets/profile_picture.png" alt="{{userConnected.photo_url}}" class="photo">-->
+<!--                    <span  *ngIf="isSidebarExtended">{{ userConnected.username }}</span>-->
+<!--                </a>                <a routerLink="/conversation/{{userConnected.id}}">-->
+<!--                    <img src="../../assets/profile_picture.png" alt="{{userConnected.photo_url}}" class="photo">-->
+<!--                    <span  *ngIf="isSidebarExtended">{{ userConnected.username }}</span>-->
+<!--                </a>                <a routerLink="/conversation/{{userConnected.id}}">-->
+<!--                    <img src="../../assets/profile_picture.png" alt="{{userConnected.photo_url}}" class="photo">-->
+<!--                    <span  *ngIf="isSidebarExtended">{{ userConnected.username }}</span>-->
+<!--                </a>                <a routerLink="/conversation/{{userConnected.id}}">-->
+<!--                    <img src="../../assets/profile_picture.png" alt="{{userConnected.photo_url}}" class="photo">-->
+<!--                    <span  *ngIf="isSidebarExtended">{{ userConnected.username }}</span>-->
+<!--                </a>                <a routerLink="/conversation/{{userConnected.id}}">-->
+<!--                    <img src="../../assets/profile_picture.png" alt="{{userConnected.photo_url}}" class="photo">-->
+<!--                    <span  *ngIf="isSidebarExtended">{{ userConnected.username }}</span>-->
+<!--                </a>                <a routerLink="/conversation/{{userConnected.id}}">-->
+<!--                    <img src="../../assets/profile_picture.png" alt="{{userConnected.photo_url}}" class="photo">-->
+<!--                    <span  *ngIf="isSidebarExtended">{{ userConnected.username }}</span>-->
+<!--                </a>                <a routerLink="/conversation/{{userConnected.id}}">-->
+<!--                    <img src="../../assets/profile_picture.png" alt="{{userConnected.photo_url}}" class="photo">-->
+<!--                    <span  *ngIf="isSidebarExtended">{{ userConnected.username }}</span>-->
+<!--                </a>                <a routerLink="/conversation/{{userConnected.id}}">-->
+<!--                    <img src="../../assets/profile_picture.png" alt="{{userConnected.photo_url}}" class="photo">-->
+<!--                    <span  *ngIf="isSidebarExtended">{{ userConnected.username }}</span>-->
+<!--                </a>-->
             }
         </div>
 
