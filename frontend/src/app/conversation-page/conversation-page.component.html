@@ -1,11 +1,29 @@
 <div id="conversation-page">
     <div class="top-bar">
-        <span>Username</span>
-        <span>Online</span>
+        <span>{{ userConv.username }}</span>
+        @if (userConv.online){
+            <span style="color:green">• Online</span>
+        }
+        @else{
+            <span style="color:red">• Offline</span>
+        }
     </div>
 
     <div class="content">
-        <p>conversation-page works!</p>
+<!--        <p>conversation-page works!</p>-->
+        <app-message-sent></app-message-sent>
+        <app-message-sent></app-message-sent>
+        <app-message-sent></app-message-sent>
+        <app-message-sent></app-message-sent>
+        <app-message-sent></app-message-sent>
+        <app-message-sent></app-message-sent>
+        <app-message-sent></app-message-sent>
+        <app-message-sent></app-message-sent>
+        <app-message-sent></app-message-sent>
+        <app-message-sent></app-message-sent>
+        <app-message-sent></app-message-sent>
+        <app-message-sent></app-message-sent>
+        <app-message-sent></app-message-sent>
         <!-- Your content goes here -->
     </div>
 
