@@ -10,6 +10,7 @@ import { ContainerMainPageComponent } from './container-main-page/container-main
 import { Router } from "@angular/router";
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { MessageSentComponent } from './message-sent/message-sent.component';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +24,9 @@ import { CommonModule } from '@angular/common';
       SidebarComponent, 
       ConversationPageComponent,
       ContainerMainPageComponent,
-      FormsModule
+      FormsModule,
+      MessageSentComponent,
+      UserComponent
     ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
