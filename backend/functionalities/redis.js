@@ -97,14 +97,9 @@ function login(user,res){
 
 
 module.exports = {
-    signup: signup
-};
-
-module.exports = {
-    create: create
-};
-
-module.exports = {
+    signup: signup,
+    create: create,
     login: login
 };
+
 
