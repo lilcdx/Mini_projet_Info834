@@ -5,6 +5,7 @@ import { AuthService } from '../services/auth.service';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { SocketioService } from '../services/socketio.service';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
+import {UserComponent} from "../user/user.component";
 
 @Component({
   selector: 'app-sidebar',
@@ -14,14 +15,15 @@ import { BehaviorSubject, Observable, Subscription } from 'rxjs';
     NgIf,
     NgClass,
     RouterLink,
-    CommonModule
+    CommonModule,
+    UserComponent
   ],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss'
 })
 export class SidebarComponent {
   @Input() userConnected!: User;
-  
+
   isSidebarExtended = false;
   sidebarWidth = '7vw'; // initial width
 
@@ -33,25 +35,25 @@ export class SidebarComponent {
 
   users: User[] = [];
   usersSubscription: Subscription = new Subscription();
-  
+
   constructor(
-    protected authService: AuthService,
-    protected router: Router,
-    protected route: ActivatedRoute,
-    private socketService: SocketioService
+      protected authService: AuthService,
+      protected router: Router,
+      protected route: ActivatedRoute,
+      private socketService: SocketioService
   ) {}
 
   ngOnInit() {
     console.log("------------------------------ SIDEBAR");
 
-    
+
 
     this.socketService.getUsers(this.APPLICATION_GLOBAL_ROOM).subscribe(users => {
       this.users = Object.values(users).map((userData : any) => {
-        return new User(userData.id, userData.username, userData.email, userData.password, userData.photo_url, userData.online);        
+        return new User(userData.id, userData.username, userData.email, userData.password, userData.photo_url, userData.online);
       });
     });
-    
+
   }
 
   onLogOut() {

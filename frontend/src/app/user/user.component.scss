@@ -3,9 +3,28 @@
     align-items: center;
 }
 
+//img{
+//    border-radius: 50%;
+//    width: 50px;
+//    height: 50px;
+//    padding: 10px;
+//}
+
+
 img{
+    margin-top: 10px;
+    width: 5vw;
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    padding: 10px;
+    transition: 0.1s ease-in-out;
+
+    &:hover {
+        border-radius: 20%;
+        transition: 0.1s ease-in-out;
+    }
+}
+
+#username-div{
+    p{
+        display: none;
+    }
 }
