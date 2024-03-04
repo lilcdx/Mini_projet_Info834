@@ -143,59 +143,61 @@ exports.login = (req, res, next) => {
                     return res.status(401).json({type: "password", message: "Password incorrect"});
                 }
                 //REDIS LOGIN
-                client.get(user.email, (err, reply) => {
-                    console.log("Redis callback");
-                    //error
-                    if (err) {
-                        console.error("redis test : ",err);
-                        return res.status(500).json({ err: "Redis error" });
-                    //null or undefined
-                    } else if (reply === null || reply === undefined) {
-                        console.log("No data in Redis for this key");
-                        return res.status(404).json({ err: "No data in Redis for this key" });
-                    //data
-                    } else {
-                        let stringData = reply;
-                        console.log(stringData);
-                        let data = JSON.parse(stringData);
-                        console.log(data);
-                        //time since the last login in ms (for now) 
-                        const TIMELIMIT = 10000; //could be modified later 
-                        const LOGINLIMIT = 10 //could be modified later
-                        let now = Date.now();
-                        let interval = now - data.lastLogin;
-                        console.log(interval);
-                        if(interval < TIMELIMIT){
-                            console.log("Connected less than ", TIMELIMIT, "ms ago");
-                            if(data.nbLogin < LOGINLIMIT){
-                                console.log("Connected less than ", TIMELIMIT, "ms ago and less than ", LOGINLIMIT, "times");
-                                data.nbLogin++;
-                                data.lastLogin = now;
-                                data.isconnected = true;
-                                client.set(user.email,JSON.stringify(data));
-                            } else {
-                                console.log("Connected less than ", TIMELIMIT, "ms ago and more than ", LOGINLIMIT, "times");
-                                data.isconnected = false;
-                                client.set(user.email,JSON.stringify(data));
-                                return res.status(401).json({type: "login", message: "Too many login attempts"});
-                                //WHAT WE SHOULD DO HERE ???
-                            }
+                // client.get(user.email, (err, reply) => {
+                //     console.log("Redis callback");
+                //     //error
+                //     if (err) {
+                //         console.error("redis test : ",err);
+                //         return res.status(500).json({ err: "Redis error" });
+                //     //null or undefined
+                //     } else if (reply === null || reply === undefined) {
+                //         console.log("No data in Redis for this key");
+                //         return res.status(404).json({ err: "No data in Redis for this key" });
+                //     //data
+                //     } else {
+                //         let stringData = reply;
+                //         console.log(stringData);
+                //         let data = JSON.parse(stringData);
+                //         console.log(data);
+                //         //time since the last login in ms (for now) 
+                //         const TIMELIMIT = 10000; //could be modified later 
+                //         const LOGINLIMIT = 10 //could be modified later
+                //         let now = Date.now();
+                //         let interval = now - data.lastLogin;
+                //         console.log(interval);
+                //         if(interval < TIMELIMIT){
+                //             console.log("Connected less than ", TIMELIMIT, "ms ago");
+                //             if(data.nbLogin < LOGINLIMIT){
+                //                 console.log("Connected less than ", TIMELIMIT, "ms ago and less than ", LOGINLIMIT, "times");
+                //                 data.nbLogin++;
+                //                 data.lastLogin = now;
+                //                 data.isconnected = true;
+                //                 client.set(user.email,JSON.stringify(data));
+                //             } else {
+                //                 console.log("Connected less than ", TIMELIMIT, "ms ago and more than ", LOGINLIMIT, "times");
+                //                 data.isconnected = false;
+                //                 client.set(user.email,JSON.stringify(data));
+                //                 return res.status(401).json({type: "login", message: "Too many login attempts"});
+                //                 //WHAT WE SHOULD DO HERE ???
+                //             }
 
-                        }else{
-                            //CASE WHERE WE CAN CONNECTED
-                            console.log("Connected more than ", TIMELIMIT, "ms ago");
-                            data.nbLogin = 1;
-                            data.lastLogin = now;
-                            data.isconnected = true;
-                            client.set(user.email,JSON.stringify(data));
+                //         }else{
+                //             //CASE WHERE WE CAN CONNECTED
+                //             console.log("Connected more than ", TIMELIMIT, "ms ago");
+                //             data.nbLogin = 1;
+                //             data.lastLogin = now;
+                //             data.isconnected = true;
+                //             client.set(user.email,JSON.stringify(data));
 
 
-                        }
+                //         }
 
                         
-                    }
-                    res.status(200).json( user );
-                })
+                //     }
+                //     res.status(200).json( user );
+                // })
+
+                res.status(200).json( user );
             })
             .catch(error => {
                 console.error("Error in password check", error);
