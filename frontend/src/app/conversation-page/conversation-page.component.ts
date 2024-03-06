@@ -7,13 +7,17 @@ import { MessageService } from '../services/message.service';
 import { Message } from '../models/message.model';
 import { FormsModule, NgForm } from "@angular/forms";
 import { UserService } from '../services/user.service';
+import {MessageSentComponent} from "../message-sent/message-sent.component";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-conversation-page',
   standalone: true,
   imports: [
     RouterLink,
-    FormsModule],
+    FormsModule,
+    MessageSentComponent
+  ],
   templateUrl: './conversation-page.component.html',
   styleUrl: './conversation-page.component.scss'
 })

@@ -25,7 +25,7 @@ export class SidebarComponent {
   @Input() userConnected!: User;
 
   isSidebarExtended = false;
-  sidebarWidth = '7vw'; // initial width
+  sidebarWidth = '5rem'; // initial width
 
   APPLICATION_GLOBAL_ROOM = "myRandomChatRoomId";
 
@@ -70,7 +70,7 @@ export class SidebarComponent {
 
   extendSidebar() {
     this.isSidebarExtended = !this.isSidebarExtended;
-    this.sidebarWidth = this.isSidebarExtended ? '20vw' : '7vw';
+    this.sidebarWidth = this.isSidebarExtended ? '16rem' : '5rem';
   }
 
 }

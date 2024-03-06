@@ -1,10 +1,29 @@
 <div id="conversation-page">
     <div class="top-bar">
         <span>{{ userSelected.username }}</span>
-        <span>Online</span>
+        @if (userSelected.online){
+            <span style="color:green">• Online</span>
+        }
+        @else{
+            <span style="color:red">• Offline</span>
+        }
     </div>
 
     <div class="content">
+<!--        <p>conversation-page works!</p>-->
+        <app-message-sent></app-message-sent>
+        <app-message-sent></app-message-sent>
+        <app-message-sent></app-message-sent>
+        <app-message-sent></app-message-sent>
+        <app-message-sent></app-message-sent>
+        <app-message-sent></app-message-sent>
+        <app-message-sent></app-message-sent>
+        <app-message-sent></app-message-sent>
+        <app-message-sent></app-message-sent>
+        <app-message-sent></app-message-sent>
+        <app-message-sent></app-message-sent>
+        <app-message-sent></app-message-sent>
+        <app-message-sent></app-message-sent>
         <!-- Your content goes here -->
         @for (message of listMessages; track message){
             <p>{{ message.idSender }} : {{ message.content }}</p>

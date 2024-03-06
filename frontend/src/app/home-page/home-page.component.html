@@ -2,5 +2,9 @@
     <h1>Welcome to ChatOnline</h1>
     <h2>Online Users</h2>
     <hr>
-<!--    TODO: List of online users-->
+    <div class="list-user">
+        @for (userConnected of users; track userConnected){
+            <app-user [user]="userConnected" routerLink="/conversation/{{userConnected.id}}"></app-user>
+        }
+    </div>
 </div>

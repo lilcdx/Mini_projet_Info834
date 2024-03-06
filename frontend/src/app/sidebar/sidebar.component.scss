@@ -11,21 +11,21 @@
     top: 0;
     left: 0;
     height: 100vh;
-    width: 7vw;
+    width: 5rem;
     display: flex;
     flex-direction: column;
     //align-items: center;
     justify-content: start;
-    padding-left: 1vw;
-    padding-right: 1vw;
+    padding-left: 0.7rem;
+    padding-right: 0.7rem;
     background-color: #1B1A1F;
     color: #FDFCFE;
     border-right: 2px solid #FDFCFE;
     transition: width 0.3s ease;
 
     .logo, .photo {
-        margin-top: 10px;
-        width: 5vw;
+        //margin-top: 10px;
+        width: 3.6rem;
         border-radius: 50%;
         transition: 0.1s ease-in-out;
 
@@ -41,15 +41,15 @@
     }
 
     .add-button, .logout {
-        margin-bottom: 5px;
-        margin-top: 5px;
+        //margin-bottom: 5px;
+        //margin-top: 5px;
         background: none;
         border: none;
 
         svg{
-            width: 5vw;
-            height: 5vw;
-            padding: 0.5vw;
+            width: 3.6rem;
+            height: 3.6rem;
+            padding: 0.35vw;
             cursor: pointer;
             border: 3px solid #A238FF;
             border-radius: 50%;
@@ -60,6 +60,11 @@
                 transition: 0.1s ease-in-out;
             }
         }
+
+        &:hover  svg{
+            border-radius: 20%;
+            transition: 0.1s ease-in-out;
+        }
     }
 
 
@@ -69,28 +74,37 @@
         text-decoration: none;
         color: #FDFCFE;
         font-size: 1.5rem;
+        margin-top: 10px;
+        max-width: 14rem;
 
         .title-app{
             color: #A238FF;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: bold;
+        }
+
+        &:hover  img, svg{
+            border-radius: 20%;
+            transition: 0.1s ease-in-out;
         }
     }
 
     span{
         margin-left: 1rem;
+        font-size: 1.3rem;
     }
 
     &.expanded {
         display: block;
         padding-left: 1rem;
+        overflow: hidden;
     }
 }
 
 .right{
     position: fixed;
-    left: 7vw;
-    width: 2vw;
+    left: 5rem;
+    width: 1.4rem;
     top: 50%;
     transform: translateY(-50%);
     transition: 0.3s ease;
@@ -100,12 +114,15 @@
     }
 }
 
-//.list-user {
-//    max-height: 200vh; /* Ajustez cette valeur en fonction de vos besoins */
-//    overflow-y: auto;
-//    direction: ltr;
-//}
-//
-//.list-user > a {
-//    direction: ltr;
-//}
+.list-user {
+    width: 4.2rem;
+    height: 55vh;
+    overflow-y: scroll;
+    //scrollbar-color: rebeccapurple green;
+    scrollbar-width: none;
+    max-width: 14rem;
+}
+
+.profil {
+    max-width: 14rem;
+}
