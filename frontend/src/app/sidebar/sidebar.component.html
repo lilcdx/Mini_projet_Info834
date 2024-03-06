@@ -54,7 +54,7 @@
         <hr>
         <div class="list-user-center">
             @for (userConnected of users; track userConnected){
-                <app-user [user]="userConnected" routerLink="/conversation" (click)="hideNewPost($event)"></app-user>
+                <app-user [user]="userConnected" routerLink="/conversation/{{userConnected.id}}" (click)="hideNewPost($event)"></app-user>
             }
         </div>
     </div>
