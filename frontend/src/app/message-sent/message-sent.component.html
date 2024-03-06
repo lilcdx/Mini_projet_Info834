@@ -1,13 +1,6 @@
 <div class="mssg">
-    <div class="sent">
-        <p class="text">Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos</p>
-        <p class="date">Today 20:12</p>
-    </div>
-</div>
-
-<div class="mssg">
-    <div class="received">
-        <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae tempor felis. Vestibulum in eros leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae tempor felis. Vestibulum in eros leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae tempor felis. Vestibulum in eros leo.</p>
-        <p class="date">Today 21:35</p>
+    <div class="sent" [ngClass]="{'sent': isUserConnectedSender(), 'received' : !isUserConnectedSender()}">
+        <p class="text">{{ message.content }}</p>
+        <p class="date">{{ message.timestamp | dateAgo  }}</p>
     </div>
 </div>

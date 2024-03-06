@@ -11,6 +11,8 @@
 
     <div class="content">
 <!--        <p>conversation-page works!</p>-->
+        
+        <!-- <app-message-sent></app-message-sent>
         <app-message-sent></app-message-sent>
         <app-message-sent></app-message-sent>
         <app-message-sent></app-message-sent>
@@ -21,12 +23,11 @@
         <app-message-sent></app-message-sent>
         <app-message-sent></app-message-sent>
         <app-message-sent></app-message-sent>
-        <app-message-sent></app-message-sent>
-        <app-message-sent></app-message-sent>
-        <app-message-sent></app-message-sent>
+        <app-message-sent></app-message-sent> -->
         <!-- Your content goes here -->
         @for (message of listMessages; track message){
-            <p>{{ message.idSender }} : {{ message.content }}</p>
+            <!-- <p>{{ message.idSender }} : {{ message.content }}</p> -->
+            <app-message-sent [message]="message" [userConnected]="userConnected"></app-message-sent>
         }
     </div>
 

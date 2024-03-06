@@ -22,7 +22,7 @@ export class MessageService {
       {
         idChat: idChat,
         content: content,
-        timestamp: Date.now(),
+        timestamp: new Date().toString(),
         idSender: idSender
       }
     );
