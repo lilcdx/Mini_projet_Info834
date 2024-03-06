@@ -4,7 +4,7 @@
     <hr>
     <div class="list-user">
         @for (userConnected of users; track userConnected){
-            <app-user [user]="userConnected" routerLink="/conversation/{{userConnected.id}}"></app-user>
+                <app-user [user]="userConnected" routerLink="/conversation/{{userConnected.id}}"></app-user>
         }
     </div>
 </div>
