@@ -73,4 +73,17 @@ export class SidebarComponent {
     this.sidebarWidth = this.isSidebarExtended ? '16rem' : '5rem';
   }
 
+  isNewPostVisible = false;
+
+  showNewPost() {
+    this.isNewPostVisible = true;
+  }
+
+  hideNewPost(event: Event) {
+    const clickedElement = event.target as Element;
+    if (clickedElement.id === 'new-conv' || clickedElement.closest('#main-div')) {
+      this.isNewPostVisible = false;
+    }
+  }
+
 }
