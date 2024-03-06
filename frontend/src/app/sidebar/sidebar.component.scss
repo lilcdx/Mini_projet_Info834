@@ -60,6 +60,11 @@
                 transition: 0.1s ease-in-out;
             }
         }
+
+        &:hover  svg{
+            border-radius: 20%;
+            transition: 0.1s ease-in-out;
+        }
     }
 
 
@@ -70,11 +75,17 @@
         color: #FDFCFE;
         font-size: 1.5rem;
         margin-top: 10px;
+        max-width: 14rem;
 
         .title-app{
             color: #A238FF;
             font-size: 1.5rem;
             font-weight: bold;
+        }
+
+        &:hover  img, svg{
+            border-radius: 20%;
+            transition: 0.1s ease-in-out;
         }
     }
 
@@ -86,6 +97,7 @@
     &.expanded {
         display: block;
         padding-left: 1rem;
+        overflow: hidden;
     }
 }
 
@@ -108,4 +120,9 @@
     overflow-y: scroll;
     //scrollbar-color: rebeccapurple green;
     scrollbar-width: none;
+    max-width: 14rem;
+}
+
+.profil {
+    max-width: 14rem;
 }
