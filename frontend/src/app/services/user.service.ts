@@ -9,7 +9,9 @@ import { User } from '../models/user.model';
   providedIn: "root",
 })
 export class UserService {
+  
   constructor(private http: HttpClient) {}
+
   getUserById(id: string) {
     let url = `http://localhost:3000/api/user/${id}`;
 

@@ -19,13 +19,17 @@
         <!--    </div>-->
         <!--    <div class="right">-->
         <!--    <app-home-page ></app-home-page>-->
-        @if (isRoute("/home")){
+
+        <router-outlet (activate)="onOutletLoaded($event)"></router-outlet>
+
+        <!-- @if (isRoute("/home")){
             <app-home-page></app-home-page>
-        } @else if (isRoute("/conversation")){
+        } @else {
             <app-conversation-page></app-conversation-page>
-        } @else if (isRoute("/chat")){
+        } -->
+        <!-- } @else if (isRoute("/chat")){
             <app-chat-inbox></app-chat-inbox>
-        }
+        } -->
     }
     @placeholder {
         <h1>User is loading</h1>

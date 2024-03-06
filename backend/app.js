@@ -7,6 +7,8 @@ const router = express.Router();
 const app = express();
 
 const userRoutes = require('./routes/user');
+const chatRoutes = require('./routes/chat');
+const messageRoutes = require('./routes/message');
 
 // BDD Connexion
 const url = 'mongodb://localhost:27017';
@@ -29,5 +31,7 @@ app.use((req, res, next) => {
 
 // ROUTES
 app.use('/api/user', userRoutes);
+app.use('/api/chat', chatRoutes);
+app.use('/api/message', messageRoutes);
 
 module.exports = app;

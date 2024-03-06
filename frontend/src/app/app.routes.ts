@@ -7,6 +7,6 @@ import { ChatInboxComponent } from './chat-inbox/chat-inbox.component';
 export const routes: Routes = [
     { path: "register", component: RegisterPageComponent },
     { path: "home", component: HomePageComponent },
-    { path: "conversation", component: ConversationPageComponent },
+    { path: "conversation/:id", component: ConversationPageComponent },
     { path: "chat", component: ChatInboxComponent },
 ];

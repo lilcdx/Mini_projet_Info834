@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { ConversationPageComponent } from '../conversation-page/conversation-page.component';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HomePageComponent } from '../home-page/home-page.component';
 import { User } from '../models/user.model';
 import { AuthService } from '../services/auth.service';
@@ -9,6 +9,7 @@ import { ChatInboxComponent } from '../chat-inbox/chat-inbox.component';
 import { FormsModule } from '@angular/forms';
 import { io } from 'socket.io-client';
 import { SocketioService } from '../services/socketio.service';
+import {RouterOutlet} from "@angular/router";
 
 const SOCKET_ENDPOINT = 'localhost:3000';
 
@@ -20,7 +21,8 @@ const SOCKET_ENDPOINT = 'localhost:3000';
     ConversationPageComponent, 
     HomePageComponent,
     ChatInboxComponent,
-    FormsModule
+    FormsModule,
+    RouterOutlet
   ],
   templateUrl: './container-main-page.component.html',
   styleUrl: './container-main-page.component.scss'
@@ -35,7 +37,8 @@ export class ContainerMainPageComponent {
   constructor(
     private router: Router,
     private authService: AuthService,
-    private socketService: SocketioService
+    private socketService: SocketioService,
+    private route: ActivatedRoute,
   ) {}
 
   ngOnInit() {
@@ -66,7 +69,6 @@ export class ContainerMainPageComponent {
       })    
 
       console.log("CONTAINER MAIN PAGE");
-      
   }
 
   onOutletLoaded(component: { userConnected: User; }) {

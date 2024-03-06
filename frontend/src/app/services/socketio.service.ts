@@ -26,6 +26,10 @@ export class SocketioService {
   constructor() { }
 
   setupSocketConnection(user: User, CHAT_ROOM: string) {
+    /**
+     * GOAL: Set up the socket connection and connect to the CHAT_ROOM global of the application
+     */
+    
     try {
       this.socket = io(environment.SOCKET_ENDPOINT, {
         auth: {
@@ -38,6 +42,27 @@ export class SocketioService {
     }
   }
 
+  joinConnectionChat = (chatId: number, userConnected: User, userSelectedId: number, cb: Function) => {
+    if (this.socket)
+      this.socket.on('joinChatRoom', (data: any) => {
+        console.log(data);
+      })
+
+    this.socket.emit('joinChatRoom', chatId, userSelectedId, cb);
+  }
+
+  subscribeToMessages = (cb: Function) => {
+    if (this.socket)
+      this.socket.on('message', (data: any) => {
+        // console.log(data);
+        cb(null, data);
+      });
+  }
+
+  sendMessage = (content: string, cb: Function) => {
+    this.socket.emit('message', content, cb);
+  }
+
   getUsers(roomName: string): Observable<any> {
     // Return observable
     return this.usersSubject.asObservable();
@@ -45,6 +70,12 @@ export class SocketioService {
 
   // -- CONNECTED
   subscribeToUsersConnected = (cb: Function): void => {
+    /**
+     * GOAL: Get the list of User Connected when a new event is emit on the 'usersConnected' event
+     * PARAMS :
+     *    - cb: callback returning the list of userConnected from the backend
+     */
+
     if (!this.socket) return;
 
     this.socket.on('usersConnected', (users: User[]) => {
@@ -92,11 +123,21 @@ export class SocketioService {
   }
 
   sendNotificationConnection = (roomName: string, cb: Function): void => {
+    /**
+     * GOAL: Send an notification on the 'usersConnected' event to tell the roomName that a new connection is made
+     */
+
     if (this.socket) this.socket.emit('usersConnected', roomName, cb);
   }
 
   // -- DISCONNECTED
   subscribeToUsersDisconnected = (cb: Function): void => {
+    /**
+     * GOAL: Get the list of User Connected when a new event is emit on the 'usersDisconnected' event
+     * PARAMS :
+     *    - cb: callback returning the list of userConnected from the backend     
+    */
+
     if (!this.socket) return;
 
     this.socket.on('usersDisconnected', (users: User[]) => {

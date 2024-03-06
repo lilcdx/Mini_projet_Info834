@@ -69,44 +69,51 @@ io.on("connection", (socket) => {
 
 
     // add user to list of users connected if he's not already in
-    if (!(socket.handshake.auth.user.id in listUsersConnected)){
+    if (!(socket.handshake.auth.user.id in listUsersConnected)) {
       listUsersConnected[socket.handshake.auth.user.id] = socket.handshake.auth.user;
     }
-
 
 
     socket.on("disconnect", () => {
       console.log("user disconnected : " + socket.handshake.auth.user.username);
     });
 
-
-
     socket.on("usersConnected", (roomName) => {
-      // console.log("usersConnected updated: " + listUsersConnected);
-      // console.log(listUsersConnected);
 
+      // -- Send listUsersConnected of all members in the roomName
       io.in(roomName).emit("usersConnected", listUsersConnected);
     });
 
     socket.on("usersDisconnected", (roomName) => {
-      // console.log('prout 💨');
-      // listUsersConnected.delete(socket.handshake.auth.user.id);
+      // -- Remove the user disconnected from the list 
       delete listUsersConnected[socket.handshake.auth.user.id];
 
-      // console.log("usersConnected updated: " + listUsersConnected);
-      // console.log(listUsersConnected);
-
-      // socket.to(roomName).emit("usersDisconnected", listUsersConnected);
+      // -- Send listUsersConnected of all members in the roomName
       io.in(roomName).emit("usersDisconnected", listUsersConnected);
 
     });
 
     socket.on("getUsers", (roomName) => {
-      // console.log("usersConnected updated: " + listUsersConnected);
-      // console.log(listUsersConnected);
-
       io.in(roomName).emit("usersConnected", listUsersConnected);
     });
+
+    socket.on("joinChatRoom", (chatId, userSelectedId) => {
+      // let roomName = socket.handshake.auth.user.id + "_" + userSelectedId;
+      let roomName = chatId;
+      console.log("--------------- JOIN : " + chatId);
+      socket.join(chatId);
+
+      socket.on('message', (content) => {
+        // console.log("Sender: " + socket.handshake.auth.user.id);
+        // console.log("Receiver :" + userSelectedId);
+        // console.log(content);
+        io.in(chatId).emit("message", {idChat: chatId, content: content,  timestamp: new Date().toISOString(), idSender: socket.handshake.auth.user.id});
+
+        
+      })
+     
+    });
+
 
   }
 

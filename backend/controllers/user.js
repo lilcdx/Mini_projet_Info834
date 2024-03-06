@@ -6,7 +6,6 @@ const validator = require('validator');
 
 // ---- CRUD
 
-
 // CREATE
 exports.createUser = (req, res, next) => {
 

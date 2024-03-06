@@ -1,18 +1,23 @@
 <div id="conversation-page">
     <div class="top-bar">
-        <span>Username</span>
+        <span>{{ userSelected.username }}</span>
         <span>Online</span>
     </div>
 
     <div class="content">
-        <p>conversation-page works!</p>
         <!-- Your content goes here -->
+        @for (message of listMessages; track message){
+            <p>{{ message.idSender }} : {{ message.content }}</p>
+        }
     </div>
 
     <div class="bottom-bar">
-        <textarea (input)="adjustHeight($event)" placeholder="Write a message..."></textarea>
-        <button>
-            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#f8f9fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-send-horizontal"><path d="m3 3 3 9-3 9 19-9Z"/><path d="M6 12h16"/></svg>
-        </button>
+        <form id="message-form" #f="ngForm" (ngSubmit)="onSubmit(f)">
+            <textarea (input)="adjustHeight($event)" name="content" ngModel id="content" required placeholder="Write a message..."></textarea>
+
+            <button type="submit" id="send-message-button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#f8f9fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-send-horizontal"><path d="m3 3 3 9-3 9 19-9Z"/><path d="M6 12h16"/></svg>
+            </button>
+        </form>
     </div>
 </div>
