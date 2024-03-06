@@ -9,6 +9,7 @@ import { ChatInboxComponent } from '../chat-inbox/chat-inbox.component';
 import { FormsModule } from '@angular/forms';
 import { io } from 'socket.io-client';
 import { SocketioService } from '../services/socketio.service';
+import { UserService } from '../services/user.service';
 import {RouterOutlet} from "@angular/router";
 
 const SOCKET_ENDPOINT = 'localhost:3000';
@@ -37,6 +38,7 @@ export class ContainerMainPageComponent {
   constructor(
     private router: Router,
     private authService: AuthService,
+    private userService: UserService,
     private socketService: SocketioService,
     private route: ActivatedRoute,
   ) {}
@@ -45,6 +47,15 @@ export class ContainerMainPageComponent {
     this.authService.getUserLoggedIn$()
       .subscribe(user => {
         this.userConnected = user as User;
+
+        this.userConnected.online = true;
+
+        // -- BDD
+        // Set user connected online true
+        this.userService.manageOnlineStatus(this.userConnected.id, true)
+          .subscribe((data: any) => {
+            // console.log("USER ONLINE STATUS UPDATED", data);
+          });
 
         if(this.userConnected) {
           // -------- SOCKET

@@ -6,6 +6,7 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { SocketioService } from '../services/socketio.service';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import {UserComponent} from "../user/user.component";
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -40,7 +41,8 @@ export class SidebarComponent {
       protected authService: AuthService,
       protected router: Router,
       protected route: ActivatedRoute,
-      private socketService: SocketioService
+      private socketService: SocketioService,
+      private userService: UserService,
   ) {}
 
   ngOnInit() {
@@ -59,6 +61,16 @@ export class SidebarComponent {
   onLogOut() {
     this.authService.logout();
     this.router.navigateByUrl("/");
+
+
+    this.userConnected.online = false;
+
+    // -- BDD
+    // Set user connected online true
+    this.userService.manageOnlineStatus(this.userConnected.id, false)
+      .subscribe((data: any) => {
+        console.log("USER ONLINE STATUS UPDATED", data);
+      });
 
     // -------- SOCKET
     this.socketService.sendNotificationDisconnection(this.APPLICATION_GLOBAL_ROOM, () => {

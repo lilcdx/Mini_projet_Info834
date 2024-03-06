@@ -7,8 +7,8 @@ import { MessageService } from '../services/message.service';
 import { Message } from '../models/message.model';
 import { FormsModule, NgForm } from "@angular/forms";
 import { UserService } from '../services/user.service';
-import {MessageSentComponent} from "../message-sent/message-sent.component";
-import {Observable} from "rxjs";
+import { MessageSentComponent } from "../message-sent/message-sent.component";
+import { Observable } from "rxjs";
 
 @Component({
   selector: 'app-conversation-page',
@@ -25,9 +25,13 @@ export class ConversationPageComponent implements OnInit {
 
   @Input() userConnected!: User;
 
+  APPLICATION_GLOBAL_ROOM = "myRandomChatRoomId";
+
   userSelected!: User;
   chatId!: number;
   listMessages: Message[] = [];
+
+  usersIds: Number[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -50,7 +54,21 @@ export class ConversationPageComponent implements OnInit {
     this.userService.getUserById(userSelectedId)
       .subscribe((data: any) => {
         this.userSelected = data;
-        console.log(this.userSelected);
+
+        this.socketService.getUsers(this.APPLICATION_GLOBAL_ROOM).subscribe(users => {
+          this.usersIds = Object.values(users).map((userData: any) => {
+            return userData.id;
+          });
+
+          // check if this.userSelected.id is in this.usersIds
+          if (this.usersIds.includes(this.userSelected.id)) {
+            console.log("USER ONLINE");
+            this.userSelected.online = true;
+          } else {
+            console.log("USER OFFLINE");
+            this.userSelected.online = false;
+          }
+        });
 
       });
 

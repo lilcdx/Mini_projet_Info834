@@ -9,6 +9,7 @@
         <a href="" class="profil">
             <img src="../../assets/profile_picture.png" alt="{{userConnected.photo_url}}" class="photo">
             <span  *ngIf="isSidebarExtended">{{ userConnected.username }}</span>
+            <span  *ngIf="isSidebarExtended">{{ userConnected.online }}</span>
         </a>
 
         <a (click)="onLogOut()" routerLink="" class="logout">

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import {forkJoin, Observable, switchMap} from 'rxjs';
 import { catchError, map, throwError } from 'rxjs';
 import { User } from '../models/user.model';
+import { on } from 'events';
 
 
 @Injectable({
@@ -27,6 +28,27 @@ export class UserService {
               data.password,
               data.photo_url,
               data.online,
+            ),
+        ),
+      );
+  }
+
+
+  manageOnlineStatus(id: number, online: boolean) {
+    let url = `http://localhost:3000/api/user/update/${id.toString()}`;
+
+    return this.http
+      .put<any>(url, { online: online })
+      .pipe(
+        map(
+          (data: any) =>
+            new User(
+              data.user._id,
+              data.user.username,
+              data.user.email,
+              data.user.password,
+              data.user.photo_url,
+              data.user.online,
             ),
         ),
       );
