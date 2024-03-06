@@ -1,13 +1,14 @@
-#main-div{
+.left{
     display: flex;
     align-items: center;
     margin: 10px;
     cursor: pointer;
+    max-width: 30%;
 
-    &:hover img {
-        border-radius: 20%;
-        transition: 0.1s ease-in-out;
-    }
+    //&:hover img {
+    //    border-radius: 20%;
+    //    transition: 0.1s ease-in-out;
+    //}
 }
 
 img{
@@ -16,4 +17,49 @@ img{
     border-radius: 50%;
     transition: 0.1s ease-in-out;
     margin-right: 10px;
+}
+
+#main-div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    //padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 10px;
+    background-color: #2E2D32;
+    cursor: pointer;
+
+    &:hover{
+        //border-radius: 20%;
+        transition: 0.1s ease-in-out;
+        background-color: #242327;
+    }
+
+    &:hover .right{
+        background-color: #29292c;
+        transition: 0.1s ease-in-out;
+    }
+}
+
+p{
+    max-width: 21vw;
+    overflow: hidden;
+}
+
+.right{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4rem;
+    height: 4rem;
+    //padding: 10px;
+    margin-right: 10px;
+    border-radius: 50%;
+    background-color: #4d4d51;
+    //cursor: pointer;
+
+    &:hover {
+        background-color: #29292c;
+        transition: 0.1s ease-in-out;
+    }
 }
