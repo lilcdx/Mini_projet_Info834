@@ -47,6 +47,7 @@
         border: none;
 
         svg{
+            min-width: 3.6rem;
             width: 3.6rem;
             height: 3.6rem;
             padding: 0.35vw;
@@ -125,6 +126,7 @@
 
 .profil {
     max-width: 14rem;
+    margin-top: 0 !important;
 }
 
 
