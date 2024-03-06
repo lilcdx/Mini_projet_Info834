@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input, ViewChild, ElementRef} from '@angular/core';
 import { ActivatedRoute, Router, RouterLink, RoutesRecognized } from "@angular/router";
 import { SocketioService } from '../services/socketio.service';
 import { User } from '../models/user.model';
@@ -24,6 +24,7 @@ import { Observable } from "rxjs";
 export class ConversationPageComponent implements OnInit {
 
   @Input() userConnected!: User;
+  @ViewChild('content') private myScrollContainer!: ElementRef;
 
   APPLICATION_GLOBAL_ROOM = "myRandomChatRoomId";
 
@@ -44,6 +45,7 @@ export class ConversationPageComponent implements OnInit {
 
   ngOnInit() {
     console.log("------------------------------ CONVERSATION PAGE");
+
 
     const userSelectedId = this.route.snapshot.params['id'];
 
@@ -177,6 +179,7 @@ export class ConversationPageComponent implements OnInit {
 
     if (f.value.content != "") {
 
+
       // -- BDD
       // Create a message in BDD
       this.messageService.createMessage(this.chatId, f.value.content, this.userConnected.id)
@@ -191,6 +194,10 @@ export class ConversationPageComponent implements OnInit {
         // console.log(data);
       });
 
+        // // -- vider le champ
+        f.resetForm();
+
+
     }
 
   }
@@ -199,4 +206,19 @@ export class ConversationPageComponent implements OnInit {
     event.target.style.height = 'inherit';
     event.target.style.height = `${event.target.scrollHeight}px`;
   }
+
+    ngAfterViewChecked() {
+        this.scrollToBottom();
+    }
+
+    scrollToBottom(): void {
+        var valeurMinimaleScroll = Math.max(
+            document.body.scrollHeight, document.documentElement.scrollHeight,
+            document.body.offsetHeight, document.documentElement.offsetHeight,
+            document.body.clientHeight, document.documentElement.clientHeight
+        ) - window.innerHeight;
+        try {
+            window.scrollTo(0, valeurMinimaleScroll);
+        } catch(err) { }
+    }
 }
