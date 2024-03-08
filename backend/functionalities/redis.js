@@ -23,11 +23,37 @@ function create(user){
 // --- REDIS SIGNUP
 
 function signup(user){
-    let userData = {"email": user.email, "connected":true,"nbLogin":1,"lastLogin":Date.now()};
+    let userData = {"email": user.email, "isconnected":true,"nbLogin":1,"lastLogin":Date.now()};
     client.set(user.email,JSON.stringify(userData));
     console.log("REDIS SIGNUP")
 };
 
+// --- REDIS LOGOUT
+
+function logout(user,res){
+    client.get(user.email, (err, reply) => {
+        console.log("Redis callback");
+        //error
+        if (err) {
+            console.error("redis test : ",err);
+            return res.status(500).json({ err: "Redis error" + err.message });
+        //null or undefined
+        } else if (reply === null || reply === undefined) {
+            console.log("No data in Redis for this key");
+            return res.status(404).json({ err: "No data in Redis for this key" });
+        //data
+        } else {
+            let stringData = reply;
+            console.log(stringData);
+            let data = JSON.parse(stringData);
+            console.log(data);
+            data.isconnected = false;
+            client.set(user.email,JSON.stringify(data));
+            return res.status(200).json({type: "logout", message: "User disconnected"});
+        }
+        
+    })
+}
 
 // --- REDIS LOGIN
 
@@ -99,7 +125,8 @@ function login(user,res){
 module.exports = {
     signup: signup,
     create: create,
-    login: login
+    login: login,
+    logout: logout,
 };
 
 

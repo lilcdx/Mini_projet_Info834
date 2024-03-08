@@ -96,6 +96,25 @@ export class UserService {
 
   }
 
+  logout(userId: string){
+    const url = `http://localhost:3000/api/user/logout/`+ userId; 
+    return this.http.post<any>(url, {})
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          if (error.status === 401) {
+            // Gérer le cas où l'authentification a échoué
+            console.error('Authentification échouée :', error);
+          } else {
+            // Gérer d'autres erreurs HTTP
+            console.error('Erreur lors de la deconnexion :', error);
+          }
+
+          // Propager l'erreur pour permettre à d'autres parties de l'application de la gérer si nécessaire
+          return throwError(error);
+        })
+      );
+  }
+
   getUsersByTerm(term:string){
       let url = `http://localhost:3000/api/user/searchByTerm`
       return this.http.post<any[]>(url, {"term": term })

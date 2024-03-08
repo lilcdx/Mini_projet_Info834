@@ -68,7 +68,21 @@ exports.getAllUser = (req, res, next) => {
 }
 
 
+// ---- LOGOUT
 
+exports.logout = (req, res, next) => {
+    //REDIS LOGOUT
+    const userID = req.params.id;
+    User.findOne({ _id:userID })
+        .then(user => {
+            console.log(user.email)
+            Redis.logout(user,res);
+        })
+        .catch(error => {
+            console.error("Error in user find", error);
+            res.status(500).json({ err: "err" });
+        });
+}
 
 // ---- CONNEXION
 exports.signup = (req, res, next) => {

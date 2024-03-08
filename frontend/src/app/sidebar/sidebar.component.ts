@@ -59,6 +59,7 @@ export class SidebarComponent {
   }
 
   onLogOut() {
+    const userId = this.userConnected.id;
     this.authService.logout();
     this.router.navigateByUrl("/");
 
@@ -66,7 +67,7 @@ export class SidebarComponent {
     this.userConnected.online = false;
 
     // -- BDD
-    // Set user connected online true
+    // Set user connected online true (false ?)
     this.userService.manageOnlineStatus(this.userConnected.id, false)
       .subscribe((data: any) => {
         console.log("USER ONLINE STATUS UPDATED", data);

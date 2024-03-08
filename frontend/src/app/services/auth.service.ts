@@ -77,8 +77,19 @@ export class AuthService {
   }
 
   logout() {
-    localStorage.removeItem("user_id");
-  }
+    const userId = localStorage.getItem("user_id");
+    if (userId) {
+        this.userService.logout(userId).subscribe(
+            () => {
+                localStorage.removeItem("user_id");
+            },
+            error => {
+                // handle error
+                console.error('Error during logout:', error);
+            }
+        );
+    }
+}
 
   isUserConnected() {
     return localStorage.getItem("user_id") !== null;

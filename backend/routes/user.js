@@ -8,6 +8,7 @@ const router = express.Router();
 router.post('/create', userCtrl.createUser);
 router.post('/signup', multer, userCtrl.signup);
 router.post('/login', userCtrl.login);
+router.post('/logout/:id', userCtrl.logout);
 
 router.put('/update/:id', userCtrl.updateUser);
 
