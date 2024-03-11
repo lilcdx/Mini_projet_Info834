@@ -53,6 +53,8 @@ export class ConversationPageComponent implements OnInit {
         this.router.events.subscribe(event => {
             if (event instanceof NavigationEnd) {
                 console.log('URL a changé : ', event.url);
+                this.router.navigateByUrl(event.url);
+                window.location.reload()
                 // this.initializeData();
             }
         });
