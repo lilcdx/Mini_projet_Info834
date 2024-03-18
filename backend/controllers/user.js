@@ -100,8 +100,8 @@ exports.signup = (req, res, next) => {
             username: req.body.username,
             email: req.body.email,
             password: hash, 
-            // photo_url: `${req.protocol}://${req.get('host')}/images/user/${req.file.filename}`
-            photo_url: "proutPHOTO"
+            photo_url: `${req.protocol}://${req.get('host')}/images/user/${req.file.filename}`
+            // photo_url: "proutPHOTO"
         });
         //REDIS SIGNUP
         Redis.signup(user);

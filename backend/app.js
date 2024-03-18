@@ -29,6 +29,9 @@ app.use((req, res, next) => {
     next();
 });
 
+// ROUTES STATIQUES
+app.use('/images', express.static(path.join(__dirname, 'images')));
+
 // ROUTES
 app.use('/api/user', userRoutes);
 app.use('/api/chat', chatRoutes);
