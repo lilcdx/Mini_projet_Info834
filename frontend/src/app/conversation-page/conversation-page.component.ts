@@ -99,6 +99,8 @@ export class ConversationPageComponent implements OnInit {
                             console.log("NEW CHAT CREATE ");
                             console.log(data);
 
+                            this.chatId = data.chat._id;
+
                             // Join the room named with the chat ID get in BDD
                             this.socketService.joinConnectionChat(data.chat._id, this.userConnected, userSelectedId, (err: any, data: any[]) => {
                                 // console.log(data);
@@ -168,7 +170,7 @@ export class ConversationPageComponent implements OnInit {
             // Create a message in BDD
             this.messageService.createMessage(this.chatId, f.value.content, this.userConnected.id)
                 .subscribe((data: any) => {
-                    // console.log(data);
+                    console.log(data);
                 });
 
             // Send the message to the socket
@@ -198,5 +200,9 @@ export class ConversationPageComponent implements OnInit {
         try {
             window.scrollTo(0, valeurMinimaleScroll);
         } catch (err) { }
+    }
+
+    chatIsLoaded() {
+        return this.chatId !== undefined;
     }
 }

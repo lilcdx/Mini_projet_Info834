@@ -1,43 +1,41 @@
+
 <div id="conversation-page">
-    <div class="top-bar">
-        <span>{{ userSelected.username }}</span>
-        @if (userSelected.online){
-            <span style="color:green">• Online</span>
-        }
-        @else{
-            <span style="color:red">• Offline</span>
-        }
-    </div>
+    @defer (when chatIsLoaded()) {
+        <div class="top-bar">
+            <span>{{ userSelected.username }}</span>
+            @if (userSelected.online){
+                <span style="color:green">• Online</span>
+            }
+            @else{
+                <span style="color:red">• Offline</span>
+            }
+        </div>
 
-    <div class="content">
-<!--        <p>conversation-page works!</p>-->
-        
-        <!-- <app-message-sent></app-message-sent>
-        <app-message-sent></app-message-sent>
-        <app-message-sent></app-message-sent>
-        <app-message-sent></app-message-sent>
-        <app-message-sent></app-message-sent>
-        <app-message-sent></app-message-sent>
-        <app-message-sent></app-message-sent>
-        <app-message-sent></app-message-sent>
-        <app-message-sent></app-message-sent>
-        <app-message-sent></app-message-sent>
-        <app-message-sent></app-message-sent>
-        <app-message-sent></app-message-sent> -->
-        <!-- Your content goes here -->
-        @for (message of listMessages; track message){
-            <!-- <p>{{ message.idSender }} : {{ message.content }}</p> -->
-            <app-message-sent [message]="message" [userConnected]="userConnected"></app-message-sent>
-        }
-    </div>
+        <div class="content">
 
-    <div class="bottom-bar">
-        <form id="message-form" #f="ngForm" (ngSubmit)="onSubmit(f)">
-            <textarea (input)="adjustHeight($event)" name="content" ngModel id="content" required placeholder="Write a message..."></textarea>
+            @for (message of listMessages; track message){
+                <!-- <p>{{ message.idSender }} : {{ message.content }}</p> -->
+                <app-message-sent [message]="message" [userConnected]="userConnected"></app-message-sent>
+            }
+        </div>
 
-            <button type="submit" id="send-message-button">
-                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#f8f9fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-send-horizontal"><path d="m3 3 3 9-3 9 19-9Z"/><path d="M6 12h16"/></svg>
-            </button>
-        </form>
-    </div>
+        <div class="bottom-bar">
+            <form id="message-form" #f="ngForm" (ngSubmit)="onSubmit(f)">
+                <textarea (input)="adjustHeight($event)" name="content" ngModel id="content" required placeholder="Write a message..."></textarea>
+
+                <button type="submit" id="send-message-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#f8f9fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-send-horizontal"><path d="m3 3 3 9-3 9 19-9Z"/><path d="M6 12h16"/></svg>
+                </button>
+            </form>
+        </div>
+    }
+
+    @placeholder {
+        <h1>Chat is loading</h1>
+    }
+
+    @error {
+        <span>Error</span>
+    }
 </div>
+
