@@ -75,7 +75,7 @@ function login(user,res){
             let data = JSON.parse(stringData);
             console.log(data);
             //time since the last login in ms (for now) 
-            const TIMELIMIT = 100000; //could be modified later 
+            const TIMELIMIT = 100000; //could be modified later Q
             const LOGINLIMIT = 10 //could be modified later
             let now = Date.now();
             let interval = now - data.lastLogin;
